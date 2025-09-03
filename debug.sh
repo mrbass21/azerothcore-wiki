@@ -1,30 +1,69 @@
 #!/bin/sh
 
-# Store results in an array
-IFS=$'\n' read -d '' -r -a result_array < <(grep -A 10 -B 2 "locale:" _config.yml | grep -E "(locale|path|permalink)" | head -20)
+# Initialize empty arrays
+locales=()
+paths=()
 
-# Now you can access individual elements
-echo "First element: ${result_array[0]}"
-echo "All elements:"
-printf '%s\n' "${result_array[@]}"
+echo "Parsing _config.yml to discover locales..."
 
-exit
+# Extract locale and path pairs from the file
+echo "Locales and paths found:"
+current_locale=""
+while IFS= read -r line; do
+    # Check if this line contains a locale definition
+    if [[ $line =~ ^[[:space:]]*locale:[[:space:]]*\"([^\"]+)\" ]]; then
+        current_locale="${BASH_REMATCH[1]}"
+    # Check if this line contains a path definition
+    elif [[ $line =~ ^[[:space:]]*path:[[:space:]]*\"([^\"]+)\" ]]; then
+        path="${BASH_REMATCH[1]}"
+        # Only add to arrays if we have a current locale
+        if [ -n "$current_locale" ]; then
+            echo "  Adding pair: $current_locale -> $path"
+            locales+=("$current_locale")
+            paths+=("$path")
+        else
+            echo "  Skipping path (no current locale)"
+        fi
+    # Reset current_locale when we encounter a new section
+    elif [[ $line =~ ^[[:space:]]*[^[:space:]] ]]; then
+        # This is a new section, reset current locale
+        current_locale=""
+    fi
+done < _config.yml
 
-# # Get a list of all changed documents, unique filenames only
-# changed_doc_files=$(git diff --name-only 40ab830ff9217c6515d6a639e99ecb5f2d654073...8a92f8f4263e69ef20ca616038f62637fb94357c | grep "^docs/")
+echo "Found the folowing locales: ${locales[*]}"
 
-# # Simple approach - just process the files and show what we'd process
-# echo "Changed doc files:"
-# echo "$changed_doc_files"
+# Show how to use them
+if [ ${#locales[@]} -gt 0 ]; then
+    echo ""
+    echo "Accessing values:"
+    for i in "${!locales[@]}"; do
+        echo "  locales[$i] = ${locales[$i]}"
+        echo "  paths[$i] = ${paths[$i]}"
+    done
+fi
 
-# temp_array=()
-# while IFS= read -r file; do
-#     temp_array+=("$(basename "$file")")
-# done <<< "$changed_doc_files"
+# Get a list of all changed documents, unique filenames only
+changed_doc_files=$(git diff --name-only 40ab830ff9217c6515d6a639e99ecb5f2d654073...8a92f8f4263e69ef20ca616038f62637fb94357c | grep "^docs/")
 
-# printf '%s\n' "${temp_array[@]}" | sort | uniq | while read -r filename; do
-#     echo "Unique: $filename"
-# done
+temp_array=()
+while IFS= read -r file; do
+    temp_array+=("$(basename "$file")")
+done <<< "$changed_doc_files"
+
+printf '%s\n' "${temp_array[@]}" | sort | uniq | while read -r filename; do
+    for i in "${!locales[@]}"; do
+        echo "Checking if ${paths[$i]}/$filename exists:"
+        if [ -f "${paths[$i]}/$filename" ]; then
+            
+            target_file="docs/en/example.md"
+            if ! echo "$changed_doc_files" | grep -q "^${paths[$i]}/$filename$"; then
+                # A locale file exists for an edited document, but the locale is missing changes
+                echo "File ${paths[$i]}/$filename is missing changes!"
+            fi
+        fi
+    done
+done
 
 
 # # Get list of sorted locales from the _config.yml file
