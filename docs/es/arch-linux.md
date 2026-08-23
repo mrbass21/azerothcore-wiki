@@ -125,7 +125,7 @@ Este script realizará parte de la configuración, te preguntará por el usuario
 AC> account create <username> <password>
 ```
 
-Nota: ¡Esta cuenta tendrá privilegios de administrador!
+Nota: ¡Esta cuenta tendrá privilegios de Game Master!
 
 Después de estos pasos, el servidor se apagará automáticamente. Puedes iniciarlo todo habilitando e iniciando los servicios:
 

@@ -123,7 +123,7 @@ This will do some configuration setup, ask you for the mysql user, start the ser
 AC> account create <username> <password>
 ```
 
-Note: This account will be given administrator privileges!
+Note: This account will be given Game Master privileges!
 
 After performing these steps, the server will shut itself down. You can start everything by enabling and starting the services:
 
