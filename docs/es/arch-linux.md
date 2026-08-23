@@ -99,7 +99,7 @@ En este script, selecciona lo siguiente:
 1. Cambiar la contraseña de root: Establece la que quieras. La contraseña inicial es la contraseña aleatoria mostrada anteriormente.
 1. Aplicar una política estricta de contraseñas: No (interferirá con las credenciales predeterminadas que creará AzerothCore).
 1. Eliminar usuarios anónimos: Sí
-1. Deshabilitar el inicio de sesión remoto: Si quieres acceder a la base de datos desde otro ordenador, Sí. De lo contrario, No.
+1. Deshabilitar el inicio de sesión remoto: Sí (esto solo elimina las cuentas root remotas; no deshabilita el acceso remoto de otros usuarios ni cambia la dirección de enlace del servidor). Responde Sí de forma predeterminada. Si necesitas acceso remoto a la base de datos, configura por separado usuarios dedicados sin privilegios de root y el acceso de red.
 1. Eliminar la base de datos de prueba: Sí
 1. Recargar las tablas de privilegios: Sí
 

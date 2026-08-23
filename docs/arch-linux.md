@@ -97,7 +97,7 @@ In this script you want to:
 1. Change the root password: Set it to whatever you want. The initial password will be the random password output above.
 1. Enforce strict password policy: No (this will interfere with the default credentials AzerothCore will create.)
 1. Remove anonymous users: Yes
-1. Disallow remote login: If you want to access the database from another computer, Yes. Otherwise, No.
+1. Disallow remote login: Yes (this removes remote root accounts only; it does not disable remote access for other users or change the server bind address). Answer Yes by default. If remote database access is needed, configure dedicated non-root users and network access separately.
 1. Remove test database: Yes
 1. Reload privilege table: Yes
 
