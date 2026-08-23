@@ -60,7 +60,7 @@ Una vez que el servidor de base de datos esté instalado y funcionando, continú
 
 Debes tener especial cuidado para que Arch no intente instalar MariaDB como sustituto de MySQL.
 
-Estas instrucciones utilizan yay para instalar las dependencias, pero puedes usar otro ayudante o ejecutar los comandos directamente con makepkg. Están pensadas para funcionar con ambos métodos.
+Los ejemplos siguientes utilizan `yay` para instalar las dependencias, pero puedes usar otro ayudante de AUR o ejecutar los comandos directamente con `makepkg`. Estas instrucciones están pensadas para funcionar con cualquiera de los dos métodos.
 
 Ten en cuenta que `acore.sh` no se distribuye con este método de instalación, ya que muchas de las tareas que gestiona se realizan de otra forma.
 
