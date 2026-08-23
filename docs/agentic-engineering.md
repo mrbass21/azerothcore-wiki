@@ -21,6 +21,7 @@ AI-assisted contributions are welcome, and they are held to the same bar as any 
 3. **Be transparent.** The PR template asks whether AI was involved; answer honestly.
 4. **Sound like a human.** Issues, PR descriptions and review replies should read like you wrote them. Nobody enjoys talking to a wall of generated text.
 5. **Respect reviewers' time.** Low-effort AI-generated PRs create more work than they save. PRs that are clearly unreviewed AI output may be closed without a detailed review.
+6. **Run a [/self-review session](agentic-self-review)** and include the generated report in your PR. The AC Staff can reject any PR that does not include such a report.
 
 Why so explicit? In the past, we received a wave of AI-generated PRs that were never properly engineered, or even understood, by their authors.
 We appreciate every contribution effort, but this creates chaos and a heavy burden on the staff reviewing them. The rest of this page shows a better way.
@@ -40,7 +41,7 @@ Used this way, AI is one of the best programming tutors you'll ever have, and ev
 Throwing a one-line prompt at an agent and pushing whatever comes out is how you end up in rule 5 above.
 What works is a structured process where *you* make the decisions and the agent does the legwork.
 
-Our recommended workflow is called [**RPA (Refine-Plan-Act)**](https://medium.com/engineering-in-the-age-of-ai/the-refine-plan-act-pattern-for-agentic-ai-coding-59ee013e4427): split the work into phases, each producing a small document that you read, correct and approve before moving on.
+Our recommended workflow is called [**RPAC (Refine-Plan-Act-Consolidate)**](https://medium.com/engineering-in-the-age-of-ai/the-refine-plan-act-pattern-for-agentic-ai-coding-59ee013e4427): split the work into phases, each producing a small document that you read, correct and approve before moving on.
 Each phase runs in a fresh, focused session, which gives you better output and costs fewer tokens (more on that below).
 
 ## Pick your agent
@@ -120,7 +121,23 @@ Execute the plan `.claude/plans/XXXXX-some-issue-title/XXXXX-some-issue-title.PL
 
 (or run the review in a later prompt).
 
-**5. Open the PR.** When you're ready, the agent can fill in the AC PR template for you:
+**5. Let AI review your code with /self-review**:
+
+Select a **powerful model** (e.g. Fable, Opus, or similar). Do NOT use cheap models for this step.
+
+```
+/self-review
+```
+
+This launches an interactive review process that gives you suggestions and lets you choose which ones to apply.
+
+Read the questions **carefully** and select the changes you think are necessary.
+
+At the end of the process, it produces a `<slug>.SELF-REVIEW.md` document that you must copy-paste verbatim as a comment on your PR so maintainers can review it.
+
+**This step is mandatory, DO NOT SKIP THIS.**
+
+**6. Open the PR.** When you're ready, the agent can fill in the AC PR template for you:
 
 ```
 /generate-pr-description
@@ -128,7 +145,9 @@ Execute the plan `.claude/plans/XXXXX-some-issue-title/XXXXX-some-issue-title.PL
 
 Then do the part the agent can't: test your change in game, read the final diff top to bottom, and open the PR.
 
-**6. Handle the review.** When comments come in, `/fetch-pr-review` collects them into a document and `/refine-pr-review` walks you through them one by one (address, partially address, or push back) with drafted replies.
+Don't forget to copy-paste the contents of the `<slug>.SELF-REVIEW.md` file generated in the previous step.
+
+**7. Handle the review.** When comments come in, `/fetch-pr-review` collects them into a document and `/refine-pr-review` walks you through them one by one (address, partially address, or push back) with drafted replies.
 
 ## Habits that pay off
 
@@ -195,10 +214,17 @@ The workflow and habits on this page are covered in more depth in these write-up
 - [An approach to agentic skills](https://medium.com/engineering-in-the-age-of-ai/my-approach-to-agentic-skills-e08dc6c0d1cd): the philosophy behind self-improve and continuously teaching your agents
 - [Context-aware notifications for multi-tasking developers](https://medium.com/engineering-in-the-age-of-ai/ai-notify-context-aware-notifications-for-multi-tasking-developers-3614635398ec): the story behind ai-notify
 - [Keep your AI agent’s memory clean and organized with memory-doctor](https://medium.com/engineering-in-the-age-of-ai/keep-your-ai-agents-memory-clean-and-organized-with-memory-doctor-a79f7174f257)
-- The agentic **Refine-Plan-Act** (RPA) pattern: explained [in theory](https://medium.com/engineering-in-the-age-of-ai/the-refine-plan-act-pattern-for-agentic-ai-coding-59ee013e4427) and [in practice](https://medium.com/engineering-in-the-age-of-ai/how-i-use-ai-agents-to-solve-programming-tasks-daily-2a68a5828b8e)
+- The agentic **Refine-Plan-Act-Consolidate** (RPAC) pattern: explained [in theory](https://medium.com/engineering-in-the-age-of-ai/the-refine-plan-act-pattern-for-agentic-ai-coding-59ee013e4427) and [in practice](https://medium.com/engineering-in-the-age-of-ai/how-i-use-ai-agents-to-solve-programming-tasks-daily-2a68a5828b8e)
+- [Use AI to assist you with both sides of code reviews](https://medium.com/engineering-in-the-age-of-ai/let-ai-speed-up-both-sides-of-your-code-reviews-while-you-stay-in-full-control-3b059506ef39)
 
 ## Wrap-up
 
 AI doesn't replace understanding the codebase; it rewards it. Used with the workflow above, it makes contributing to AzerothCore faster, more fun, and honestly one of the best ways to level up as a developer.
 
 Questions, ideas or feedback? Come talk to us on Discord. This page will keep evolving, and suggestions to improve it are always welcome.
+
+## For people who do not speak English
+
+Use [this rule](https://github.com/eai-org/agent-toolkit/blob/main/docs/use-my-mothertongue-rule.md) to make your agent talk to you in your own language while still generating artefacts in English.
+
+You can just give your AI agent that link, mention your native language, and ask the agent to install it.
