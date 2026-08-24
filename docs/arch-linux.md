@@ -60,7 +60,7 @@ Once your database server is installed and running, continue with the [Linux Cla
 {% include warning.html content="The AzerothCore package in the AUR has been re-written and is undergoing testing by users. Please offer any feedback in Discord." %}
 Special care must be taken so that Arch does not try to install MariaDB as a substitute for MySQL.
 
-The examples below use `yay` to install these dependencies, but you can use another AUR helper or run the commands directly with `makepkg`. These instructions are intended to work with either approach.
+The examples below use `yay` to install these dependencies, but you can use another AUR helper. These instructions are intended to work with either approach.
 
 Please note that `acore.sh` is not distributed with this installation method since many of the things it manages are handled differently.
 
