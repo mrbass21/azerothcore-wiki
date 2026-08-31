@@ -8,7 +8,7 @@ AzerothCore puede ejecutar **pruebas de extremo a extremo (end-to-end) en vivo**
 
 Los bots provienen de [AzerothGhost](https://github.com/azerothcore/AzerothGhost). Inician sesión a través de auth, entran al mundo y ejecutan los mismos opcodes que utiliza un cliente oficial (inicio de sesión, teletransportes, lanzamientos de hechizos, combate, misiones, botín, etc.). Las aserciones revisan el protocolo, la caché de objetos y, a veces, la base de datos de personajes.
 
-Esto **no** reemplaza el [probando una PR en el juego](how-to-test-a-pr). Es una cobertura adicional en el stack en vivo, principalmente para que un PR no se pueda fusionar si una ruta visible para el jugador ya está rota.
+Esto **no** reemplaza el [Cómo probar un PR en el juego.](how-to-test-a-pr). Es una cobertura adicional en el stack en vivo, principalmente para que un PR no se pueda fusionar si una ruta visible para el jugador ya está rota.
 
 ## Qué hace la CI
 
@@ -21,7 +21,7 @@ En un pull request contra `azerothcore/azerothcore-wotlk` (no en bifurcaciones n
 
 Por lo tanto, el flujo de trabajo ejecuta un stack **completo** de AC desde esos binarios y luego se comunica con él como un cliente. No hay un worldserver parcial ni un combate simulado.
 
-Un comentario en el flujo de trabajo sobre "dry-run" es solo sobre la ruta de CMake/compilación. Las pruebas en sí siempre afectan a un proceso en vivo.
+Un comentario en el flujo de trabajo sobre "dry-run" es solo sobre la ruta de CMake/compilación. Las pruebas en sí siempre se ejecutan contra un proceso en vivo.
 
 La ejecución en `master` es la suite completa, no un subconjunto de prueba rápida (smoke). Eso detecta fallas intermitentes y casos en los que un PR más antiguo estaba en verde contra un `master` anterior, pero se rompe una vez que se integra con commits posteriores.
 
