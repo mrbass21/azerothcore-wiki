@@ -14,9 +14,9 @@ Puedes contribuir de varias formas a AzerothCore:
 
 - [Probar cambios solo de base de datos](how-to-test-db-only-changes)
 
-- [Crear un pull request](#how-to-create-a-pull-request)
+- [Pruebas e2e en vivo](live-e2e)
 
-- [Crear una solicitud de extracción](#how-to-create-a-pull-request)
+- [Crear un pull request](#how-to-create-a-pull-request)
 
 - [Mejorar nuestra wiki](#improve-the-wiki)
 
