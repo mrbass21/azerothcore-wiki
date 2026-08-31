@@ -130,6 +130,9 @@ Para asegurarse de que está ejecutando correctamente su servidor con el PR, com
 
 Ahora entra en el juego y haz tus pruebas.
 
+Los PRs oficiales también ejecutan [pruebas e2e en vivo](live-e2e) en CI (authserver + worldserver completo, bots de protocolo). Eso es cobertura extra. No reemplaza las verificaciones dentro del juego de esta página.
+
+
 ## ¿Qué hay que probar?
 
 Las instrucciones sobre lo que hay que probar en el ámbito de un PR deben ser proporcionadas por el autor del PR en la descripción del mismo. Si no es el caso, no dudes en dejar un comentario en la descripción del PR pidiendo instrucciones de prueba.
