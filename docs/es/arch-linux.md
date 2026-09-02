@@ -165,4 +165,4 @@ Esto hará lo siguiente:
 > {% include warning.html content="Si tu módulo tiene un archivo de configuración o ajustes que deban añadirse a archivos de configuración existentes, tendrás que hacerlo manualmente. Después de actualizar la configuración, reinicia el servicio world." %}
 
 ### Comentarios
-Este trabajo está en curso y todavía no he probado muchos módulos. Si encuentras problemas, publícalos en Discord. @Beck es el usuario que mantiene este paquete.
+Este trabajo está en curso y todavía no he probado muchos módulos. Si encuentras problemas, publícalos en Discord. Beck es el usuario que mantiene este paquete.

@@ -163,4 +163,4 @@ This will:
 > {% include warning.html content="If your module has a config file or settings that need to be added to existing configuration files, you must do this manually! Once updated, restart the world service." %}
 
 ### Feedback
-This is a work in progress and I have not tested many modules with this. If you run into issues, please post them in Discord. @Beck is the user maintaining this package.
+This is a work in progress and I have not tested many modules with this. If you run into issues, please post them in Discord. Beck is the user maintaining this package.
